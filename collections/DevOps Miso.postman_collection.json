@@ -1,0 +1,458 @@
+{
+	"info": {
+		"_postman_id": "c31c333a-fd9a-4435-949b-0c773a65d93a",
+		"name": "DevOps Miso",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26744671"
+	},
+	"item": [
+		{
+			"name": "Agregar a blacklist sin token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}",
+					"host": [
+						"{{URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar a blacklist token inválido",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{INVALID_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}",
+					"host": [
+						"{{URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar a blacklist sin email",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{VALID_JWT}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"app_uuid\": \"{{APP_UUID}}\" ,\n    \"blocked_reason\": \"{{BLOCKED_REASON}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}",
+					"host": [
+						"{{URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar a blacklist sin app_uuid",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{VALID_JWT}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"{{EMAIL}}\",\n    \"blocked_reason\": \"{{BLOCKED_REASON}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}",
+					"host": [
+						"{{URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar a blacklist sin blocked_reason",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{VALID_JWT}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"app_uuid\": \"{{APP_UUID}}\" ,\n    \"email\": \"{{EMAIL}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}",
+					"host": [
+						"{{URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar a blacklist email inválido",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{VALID_JWT}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"app_uuid\": \"{{APP_UUID}}\" ,\n    \"email\": \"email_falso_123\",\n    \"blocked_reason\": \"{{BLOCKED_REASON}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}",
+					"host": [
+						"{{URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar a blacklist app_uuid inválido",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{VALID_JWT}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"app_uuid\": \"app_uuid_inválido\" ,\n    \"email\": \"{{EMAIL}}\",\n    \"blocked_reason\": \"{{BLOCKED_REASON}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}",
+					"host": [
+						"{{URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar a blacklist OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{VALID_JWT}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"app_uuid\": \"{{APP_UUID}}\",\n    \"email\": \"{{EMAIL}}\",\n    \"blocked_reason\": \"{{BLOCKED_REASON}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}",
+					"host": [
+						"{{URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar a blacklist email duplicado",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{VALID_JWT}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"app_uuid\": \"{{APP_UUID}}\",\n    \"email\": \"{{EMAIL}}\",\n    \"blocked_reason\": \"{{BLOCKED_REASON}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}",
+					"host": [
+						"{{URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validar email sin token",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/{{EMAIL}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"{{EMAIL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validar email token inválido",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{INVALID_JWT}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/{{EMAIL}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"{{EMAIL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validar email pertenece a blacklist",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{VALID_JWT}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/{{EMAIL}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"{{EMAIL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validar email no pertenece a blacklist",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{VALID_JWT}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/af.martinezc1@uniandes.edu.co",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"af.martinezc1@uniandes.edu.co"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "localhost:5000/blacklists",
+			"type": "string"
+		},
+		{
+			"key": "VALID_JWT",
+			"value": "my-secret-key",
+			"type": "string"
+		},
+		{
+			"key": "EMAIL_ID",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "INVALID_JWT",
+			"value": "token_falso_123",
+			"type": "string"
+		},
+		{
+			"key": "APP_UUID",
+			"value": "8177b193-7a27-4303-b0f5-c6bc13def117",
+			"type": "string"
+		},
+		{
+			"key": "EMAIL",
+			"value": "s.nader21@uniandes.edu.co",
+			"type": "string"
+		},
+		{
+			"key": "BLOCKED_REASON",
+			"value": "Es spam",
+			"type": "string"
+		}
+	]
+}
