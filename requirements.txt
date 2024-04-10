@@ -14,7 +14,7 @@ MarkupSafe==2.1.4
 marshmallow==3.20.2
 marshmallow-sqlalchemy==0.30.0
 packaging==23.2
-psycopg2==2.9.9
+psycopg2-binary==2.9.9
 python-dateutil==2.8.2
 python-dotenv==1.0.1
 python-json-logger
