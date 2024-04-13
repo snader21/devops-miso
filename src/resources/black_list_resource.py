@@ -80,3 +80,7 @@ class BlackListResource(Resource):
             return {'status': 'fail', 'data': {'encontrado': False}}, 404
         else:
             return {'status': 'success', 'data': {'encontrado': True, 'blocked_reason': query.blocked_reason}}, 200
+
+class BlackListHealthResource(Resource):
+    def get(self):
+        return 'pong', 200
