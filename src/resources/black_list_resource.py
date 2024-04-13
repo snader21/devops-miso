@@ -14,7 +14,8 @@ class BlackListResource(Resource):
     def post(self):
 
         # 0. Get ip from request
-        ip_address = request.remote_addr
+        ip_address = request.headers.get(
+            'X-Forwarded-For', request.remote_addr).split(',')[0]
         # 1. Get token from request
         token = request.headers.get('Authorization')
         if token is None:
