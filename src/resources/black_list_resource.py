@@ -13,6 +13,8 @@ class BlackListResource(Resource):
 
     def post(self):
 
+        # 0. Get ip from request
+        ip_address = request.remote_addr
         # 1. Get token from request
         token = request.headers.get('Authorization')
         if token is None:
@@ -24,7 +26,7 @@ class BlackListResource(Resource):
 
         # 3. Validate required fields
         body_data = request.get_json()
-        required_fields = ["email", "app_uuid", "blocked_reason"]
+        required_fields = ["email", "app_uuid"]
         for field in required_fields:
             if field not in body_data:
                 return {'status': 'fail', 'msg': f'Campo {field} es requerido'}, 400
@@ -52,6 +54,7 @@ class BlackListResource(Resource):
         # 6. Save to database
         new_blacklist = Blacklist(
             email=body_data["email"],
+            ip_address=ip_address,
             app_uuid=body_data["app_uuid"],
             blocked_reason=body_data["blocked_reason"]
         )
@@ -80,6 +83,7 @@ class BlackListResource(Resource):
             return {'status': 'fail', 'data': {'encontrado': False}}, 404
         else:
             return {'status': 'success', 'data': {'encontrado': True, 'blocked_reason': query.blocked_reason}}, 200
+
 
 class BlackListHealthResource(Resource):
     def get(self):
