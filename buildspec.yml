@@ -3,7 +3,13 @@ version: 0.2
 phases:
   pre_build:
     commands:
+      - echo "Installing dependencies..."
       - pip install -r requirements.txt
+  build:
+    commands:
+      - echo "Running tests..."
+      - python -m unittest discover
+
 artifacts:
   files:
     - "**/*"
