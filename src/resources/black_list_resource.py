@@ -7,8 +7,6 @@ from src.models.blacklist_model import Blacklist, BlacklistSchema
 from src import db
 from src.infrastructure.dao import DAO
 
-blacklist_schema = BlacklistSchema()
-
 
 class BlackListResource(Resource):
 
@@ -65,7 +63,7 @@ class BlackListResource(Resource):
         })
 
         # 7. Return response
-        return {'status': 'success', 'msg': 'Correo agregado a la lista negra', "data": blacklist_schema.dump(new_blacklist)}, 201
+        return {'status': 'success', 'msg': 'Correo agregado a la lista negra', "data": new_blacklist}, 201
 
     def get(self, email):
 
@@ -85,7 +83,7 @@ class BlackListResource(Resource):
         if blacklist_record == None:
             return {'status': 'fail', 'data': {'encontrado': False}}, 404
         else:
-            return {'status': 'success', 'data': {'encontrado': True, 'blocked_reason': blacklist_record.blocked_reason}}, 200
+            return {'status': 'success', 'data': {'encontrado': True, 'blocked_reason': blacklist_record.get("blocked_reason")}}, 200
 
 
 class BlackListHealthResource(Resource):
