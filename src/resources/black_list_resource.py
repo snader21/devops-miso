@@ -88,4 +88,4 @@ class BlackListResource(Resource):
 
 class BlackListHealthResource(Resource):
     def get(self):
-        return 'pong fail', 200
+        return 'pong', 200
