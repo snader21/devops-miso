@@ -6,7 +6,7 @@ RUN apk add py3-pip \
 WORKDIR /app
 COPY . /app/
     
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt --ignore-installed six
 
 ENV POSTGRES_USER=postgres
 ENV POSTGRES_PASSWORD=postgres
