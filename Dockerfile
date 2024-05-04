@@ -8,10 +8,6 @@ COPY . /app/
     
 RUN pip install -r requirements.txt --ignore-installed six
 
-ENV POSTGRES_USER=postgres
-ENV POSTGRES_PASSWORD=postgres
-ENV POSTGRES_DB=blacklist
-
 EXPOSE 5000
 
 CMD ["python3", "application.py"]
