@@ -12,6 +12,32 @@
 
       "image": "<IMAGE1_NAME>",
       "essential": true,
+      "environment": [
+        {
+          "name": "DB_NAME",
+          "value": "blacklist"
+        },
+        {
+          "name": "API_KEY",
+          "value": "my-secret-key"
+        },
+        {
+          "name": "DB_PORT",
+          "value": "5432"
+        },
+        {
+          "name": "DB_HOST",
+          "value": "database-1.c1s64eo6okyw.us-east-1.rds.amazonaws.com"
+        },
+        {
+          "name": "DB_USER",
+          "value": "postgres"
+        },
+        {
+          "name": "DB_PASSWORD",
+          "value": "postgres"
+        }
+      ],
       "name": "Container-app-python"
     }
   ],
