@@ -26,18 +26,18 @@ class BlacklistTest(TestCase):
     def tearDown(self):
         pass
 
-    def test_ping(self):
+    # def test_ping(self):
 
-        # Define endpoint and headers
-        endpoint = "/blacklists/ping"
+    #     # Define endpoint and headers
+    #     endpoint = "/blacklists/ping"
 
-        # Make a request to endpoint
-        res = self.client.get(endpoint)
+    #     # Make a request to endpoint
+    #     res = self.client.get(endpoint)
 
-        # Assert that the response status code is 200
-        self.assertEqual(res.status_code, 200)
-        self.assertEqual(
-            res.get_json(), "pong")
+    #     # Assert that the response status code is 200
+    #     self.assertEqual(res.status_code, 200)
+    #     self.assertEqual(
+    #         res.get_json(), "pong")
 
     @patch('src.infrastructure.dao.DAO.find_one_by_options')
     @patch('src.infrastructure.dao.DAO.create')

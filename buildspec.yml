@@ -10,19 +10,19 @@ phases:
   build:
     commands:
       - echo Logging in to Amazon ECR...
-      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 992382831875.dkr.ecr.us-east-1.amazonaws.com
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 905418334417.dkr.ecr.us-east-1.amazonaws.com
       - echo Build started on `date`
       - echo Building the Docker image...
       - docker build -t python_app:latest .
-      - docker tag python_app:latest 992382831875.dkr.ecr.us-east-1.amazonaws.com/python_app:latest
+      - docker tag python_app:latest 905418334417.dkr.ecr.us-east-1.amazonaws.com/python_app:latest
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push 992382831875.dkr.ecr.us-east-1.amazonaws.com/python_app:latest
+      - docker push 905418334417.dkr.ecr.us-east-1.amazonaws.com/python_app:latest
       - echo Writing Image Definitions file...
-      - printf '[{"name":"Container-app-python","imageUri":"992382831875.dkr.ecr.us-east-1.amazonaws.com/python_app:latest"}]' > imagedefinitions.json
-      - printf '{"ImageURI":"992382831875.dkr.ecr.us-east-1.amazonaws.com/python_app:latest"}' > imageDetail.json
+      - printf '[{"name":"Container-app-python","imageUri":"905418334417.dkr.ecr.us-east-1.amazonaws.com/python_app:latest"}]' > imagedefinitions.json
+      - printf '{"ImageURI":"905418334417.dkr.ecr.us-east-1.amazonaws.com/python_app:latest"}' > imageDetail.json
       - cat imagedefinitions.json
 
 artifacts:
