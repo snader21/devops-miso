@@ -27,7 +27,7 @@
         },
         {
           "name": "DB_HOST",
-          "value": "database-fargate.cbwmmisewnbr.us-east-1.rds.amazonaws.com"
+          "value": ""
         },
         {
           "name": "DB_USER",
