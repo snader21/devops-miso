@@ -10,6 +10,11 @@ services:
       - DB_PORT=5432
       - DB_NAME=blacklist
       - API_KEY=my-secret-key
+      - NEW_RELIC_APP_NAME=Blacklist
+      - NEW_RELIC_LOG=stdout
+      - NEW_RELIC_DISTRIBUTED_TRACING_ENABLED=true
+      - NEW_RELIC_LICENSE_KEY=319f3248ed269e4ed4fa356dd95cd9817fe8NRAL
+      - NEW_RELIC_LOG_LEVEL=info
     restart: always
     networks:
       - app_net
