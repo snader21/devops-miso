@@ -14,8 +14,7 @@ class BlackListResource(Resource):
     LoggerUtility.initialize_logger()
 
     def post(self):
-        message = f"[INFO] post method"
-        LoggerUtility.log(message)
+        LoggerUtility.log("post method")
         # 0. Get ip from request
         ip_address = request.headers.get(
             'X-Forwarded-For', request.remote_addr).split(',')[0]
@@ -70,9 +69,7 @@ class BlackListResource(Resource):
         return {'status': 'success', 'msg': 'Correo agregado a la lista negra', "data": new_blacklist}, 201
 
     def get(self, email):
-
-        message = f"[INFO] get method"
-        LoggerUtility.log(message)
+        LoggerUtility.log("get method")
 
         # 1. Get token from request
         token = request.headers.get('Authorization')
@@ -95,7 +92,5 @@ class BlackListResource(Resource):
 
 class BlackListHealthResource(Resource):
     def get(self):
-        message = f"[INFO] ping method"
-        LoggerUtility.log(message)
-        
+        LoggerUtility.log("ping method")
         return 'pong', 200

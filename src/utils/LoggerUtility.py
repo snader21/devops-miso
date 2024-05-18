@@ -25,5 +25,5 @@ class LoggerUtility:
     def log(message):
         if LoggerUtility.logger is None:
             LoggerUtility.initialize_logger()
-        LoggerUtility.logger.info(message)
-        LoggerUtility.log_to_new_relic(message)
+        LoggerUtility.logger.info(f"[INFO] {message}")
+        LoggerUtility.log_to_new_relic(f"[INFO] {message}")
