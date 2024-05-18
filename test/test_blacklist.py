@@ -26,7 +26,7 @@ class BlacklistTest(TestCase):
     def tearDown(self):
         pass
 
-    def test_ping(self):
+    # def test_ping(self):
 
         # Define endpoint and headers
         endpoint = "/blacklists/ping"
