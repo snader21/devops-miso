@@ -6,12 +6,15 @@ import uuid
 from src.models.blacklist_model import Blacklist, BlacklistSchema
 from src import db
 from src.infrastructure.dao import DAO
+from src.utils.LoggerUtility import LoggerUtility
 
 
 class BlackListResource(Resource):
 
-    def post(self):
+    LoggerUtility.initialize_logger()
 
+    def post(self):
+        LoggerUtility.log("post method")
         # 0. Get ip from request
         ip_address = request.headers.get(
             'X-Forwarded-For', request.remote_addr).split(',')[0]
@@ -66,6 +69,7 @@ class BlackListResource(Resource):
         return {'status': 'success', 'msg': 'Correo agregado a la lista negra', "data": new_blacklist}, 201
 
     def get(self, email):
+        LoggerUtility.log("get method")
 
         # 1. Get token from request
         token = request.headers.get('Authorization')
@@ -88,4 +92,5 @@ class BlackListResource(Resource):
 
 class BlackListHealthResource(Resource):
     def get(self):
+        LoggerUtility.log("ping method")
         return 'pong', 200
